@@ -1,7 +1,3 @@
-import 'jquery';
-import 'normalize.css';
-import 'bootstrap-loader';
-
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import AppComponent from './app.component';

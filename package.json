@@ -3,9 +3,14 @@
   "version": "0.0.1",
   "description": "Generic Angular Boilerplate",
   "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JhossePaul/angular_boilerplate"
+  },
   "contributors": [
     {
-      "name": "Paul Márquez ",
+      "name": "Paul Márquez",
       "email": "paul.Marquez@millwardbrown.com"
     },
     {
@@ -17,7 +22,36 @@
       "email": "moises.Arizpe@millwardbrown.com"
     }
   ],
-  "license": "MIT",
+  "scripts": {
+    "build:dev": "webpack --config config/webpack.dev.js --colors --progress --profile",
+    "build:prod": "webpack --config config/webpack.prod.js --colors --progress --profile --bail",
+    "build": "npm run build:dev",
+    "clean:dist": "del dist",
+    "clean:ubstall": "npm set progress=false && npm install",
+    "clean:start": "npm start",
+    "clean": "npm cache clean && del node_modules dist",
+    "del": "del",
+    "lint": "npm run eslint \"src/**/*.js\"",
+    "postversion": "git push && git push --tags",
+    "prebuild:dev": "npm run clean:dist",
+    "prebuild:prod": "npm run clean:dist",
+    "preclean:install": "npm run clean",
+    "preclean:start": "npm run clean",
+    "server:dev:hmr": "npm run server:dev -- --inline --hot",
+    "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --colors --watch --content-base src/",
+    "server:prod": "http-server dist --cors",
+    "server": "npm run server:dev",
+    "start:hmr": "npm run server:dev:hmr",
+    "start": "npm run server:dev",
+    "eslint": "eslint",
+    "version": "npm run build",
+    "watch:dev:hmr": "npm run watch:dev -- --hot",
+    "watch:dev": "npm run build:dev -- --watch",
+    "watch:prod": "npm run build:prod -- --watch",
+    "watch": "npm run watch:dev",
+    "webpack-dev-server": "webpack-dev-server",
+    "webpack": "webpack"
+  },
   "dependencies": {
     "angular": "^1.5.8",
     "angular-ui-router": "^0.3.1",
@@ -29,6 +63,7 @@
     "normalize.css": "^5.0.0"
   },
   "devDependencies": {
+    "assets-webpack-plugin": "^3.4.0",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-transform-runtime": "^6.15.0",
@@ -36,23 +71,17 @@
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.16.3",
-    "bootstrap-loader": "^2.0.0-beta.12",
-    "browser-sync": "^2.17.3",
-    "connect-history-api-fallback": "^1.3.0",
+    "bootstrap-loader": "^1.2.1",
+    "bootstrap-sass": "^3.3.7",
+    "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.25.0",
     "del": "^2.2.2",
     "eslint": "^3.7.1",
     "eslint-loader": "^1.5.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
-    "font-awesome-sass-loader": "^1.0.2",
-    "fs-walk": "0.0.1",
-    "gulp": "^3.9.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-template": "^4.0.0",
-    "gulp-util": "^3.0.7",
     "html-webpack-plugin": "^2.22.0",
-    "ng-annotate": "^1.2.1",
+    "http-server": "^0.9.0",
     "ng-annotate-loader": "^0.2.0",
     "node-libs-browser": "^1.0.0",
     "node-sass": "^3.10.1",
@@ -61,11 +90,11 @@
     "run-sequence": "^1.2.2",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
+    "to-string-loader": "^1.1.5",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
-    "webpack-dev-middleware": "^1.8.4",
     "webpack-dev-server": "^1.16.2",
-    "webpack-hot-middleware": "^2.13.0",
-    "yargs": "^6.0.0"
+    "webpack-md5-hash": "0.0.5",
+    "webpack-merge": "^0.14.1"
   }
 }
